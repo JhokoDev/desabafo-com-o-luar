@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Georgia', serif;
+    background-color: #080514; /* Fundo escuro noturno */
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.background {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* Faz a imagem cobrir a tela, garantindo que as medidas vh e vw fiquem sempre fiéis às bordas visuais */
+    object-fit: cover; 
+}
+
+.enter-button {
+    position: absolute;
+    
+    /* ============================================================== */
+    /*   ÁREA PARA EDIÇÃO MANUAL DO BOTÃO (AJUSTE COMO QUISER)       */
+    /*   vh = porcentagem da altura da tela (ex: 50vh é o meio)      */
+    /*   vw = porcentagem da largura da tela (ex: 50vw é o meio)     */
+    /* ============================================================== */
+    
+    /* 1. POSIÇÃO VERTICAL (Cima para baixo) */
+    top: 50.6vh;
+    
+    /* 2. POSIÇÃO HORIZONTAL (Esquerda para direita) */
+    left: 74.3vw;
+    
+    /* 3. LARGURA DO BOTÃO */
+    width: 44.5vw;
+    
+    /* 4. ALTURA DO BOTÃO */
+    height: 5.8vh;
+    
+    /* Centraliza o botão em relação às coordenadas (top, left) acima */
+    transform: translate(-50%, -50%);
+    
+    /* ============================================================== */
+    
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    pointer-events: auto; /* Garante que é clicável */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.enter-button:hover {
+    /* Manter o translate no hover para evitar pulos quando aumentar o cursor! */
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: brightness(1.2);
+}
+
+.enter-button:active {
+    transform: translate(-50%, -50%) scale(0.97);
+}
+
+.button-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: 100% 100%; 
+    object-fit: fill; /* Força que botao.png estique de acordo com o espaço definido acima de forma contínua igual no desenho original */
+    z-index: 1;
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+    color: #f7e6b7;
+    /* Tamanho escalável independentemente do device que está usando */
+    font-size: clamp(10px, 3vmin, 20px);
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
