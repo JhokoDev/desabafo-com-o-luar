@@ -7,33 +7,61 @@
 body, html {
     width: 100%;
     height: 100%;
-    font-family: 'Georgia', serif;
-    background-color: #080514; /* Fundo escuro noturno */
-    overflow: hidden;
-}
-
-.container {
+    font-family: 'Inter', 'Georgia', serif;
+    background-color: #060b19; /* Preto azulado */
+    
+    /* Centraliza o app-frame na tela toda */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 100vh;
 }
 
-.image-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Moldura que simula uma tela mobile (centralizada, com cantos arredondados) */
+.container {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.background {
-    display: block;
-    width: 100%;
+.image-content {
+    position: relative;
     height: 100%;
-    /* Faz a imagem cobrir a tela, garantindo que as medidas vh e vw fiquem sempre fiéis às bordas visuais */
-    object-fit: cover; 
+    display: inline-block;
+    /* Se quiser a borda arredondada no desktop, descomente as linhas abaixo */
+    /* border-radius: 20px; overflow: hidden; */ 
+}
+
+.capa-img {
+    height: 100%;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Em telas desktop largas, centralizamos com um pequeno respiro */
+@media (min-width: 600px) {
+    .image-content {
+        height: 96vh;
+        margin-top: 2vh;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+}
+
+/* Se a tela for muito estreita, garantimos que a largura mande */
+@media (max-aspect-ratio: 9/16) {
+    .image-content {
+        width: 100vw;
+        height: auto;
+    }
+    .capa-img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .enter-button {
@@ -41,21 +69,22 @@ body, html {
     
     /* ============================================================== */
     /*   ÁREA PARA EDIÇÃO MANUAL DO BOTÃO (AJUSTE COMO QUISER)       */
-    /*   vh = porcentagem da altura da tela (ex: 50vh é o meio)      */
-    /*   vw = porcentagem da largura da tela (ex: 50vw é o meio)     */
+    /*   Agora usamos "%" no lugar de vw/vh                          */
+    /*   Isso garante que ele fique colado no cenário idêntico       */
+    /*   em todas as telas! (ex: 50% é o meio)                       */
     /* ============================================================== */
     
     /* 1. POSIÇÃO VERTICAL (Cima para baixo) */
-    top: 50.6vh;
+    top: 50.1%;
     
     /* 2. POSIÇÃO HORIZONTAL (Esquerda para direita) */
-    left: 74.3vw;
+    left: 73.8%;
     
     /* 3. LARGURA DO BOTÃO */
-    width: 44.5vw;
+    width: 46.5%;
     
     /* 4. ALTURA DO BOTÃO */
-    height: 5.8vh;
+    height: 20.8%;
     
     /* Centraliza o botão em relação às coordenadas (top, left) acima */
     transform: translate(-50%, -50%);
